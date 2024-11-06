@@ -10,3 +10,74 @@
     import 'relative/path/to/stylesheet.scss';
 
 */
+h1 {
+    color: #ec7744;
+    text-align: center;
+    padding-top: 25px;
+    padding-bottom: 30px;
+  }
+  
+  html, body {
+    background-color: #201d30;
+    justify-content: center;
+    display: flex;
+    background-image: url("https://images8.alphacoders.com/829/thumb-1920-829519.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    margin: 0;
+    font-family: 'Times New Roman', Times, serif;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    flex-direction: column;
+    padding-top: 150px;
+    padding-bottom: 450px;
+  }
+  
+  .container ul {
+    width: 500px;
+    border: #8edf5f 10px solid;
+    background-color: #995cd0;
+  }
+  
+  .container li {
+    background-color: #995cd0;
+  }
+  
+  #button-addon2 {
+    background-color: #5549b7;
+    color: #ec7744;
+  }
+  
+  #inputG {
+    color: #ec7744;
+    background-color: #5549b7;
+  }
+  
+  #group {
+    border: #8edf5f 5px solid;
+    border-radius: 15px;
+  }
+  
+  .list-group-item {
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    
+  }
+  
+  .list-group-item span {
+    margin-left: 5px; 
+    cursor: pointer; 
+  }
+  
+  .list-group-item .fa-pencil {
+    margin-right: 5px; 
+    cursor: pointer; 
+    padding-left: 290px;
+  }
