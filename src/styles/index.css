@@ -75,9 +75,34 @@ h1 {
     margin-left: 5px; 
     cursor: pointer; 
   }
-  
-  .list-group-item .fa-pencil {
-    margin-right: 5px; 
-    cursor: pointer; 
-    padding-left: 290px;
+
+
+  .list-group-item .right-icons {
+    margin-left: auto; /* Empuja los iconos hacia el extremo derecho */
+    display: flex;
+    justify-content: space-between; /* Para asegurarse que haya espacio entre los iconos */
+    align-items: center;
   }
+  
+  .clear {
+    display: flex; /* Hacemos que el contenedor del botón sea un contenedor flex */
+    justify-content: center; /* Centra el botón horizontalmente */
+    margin-top: 20px; /* Añadimos un pequeño margen superior si es necesario */
+    
+  }
+  
+  .clear .btn {
+    background-color: #ec7744;
+    color: #8edf5f;
+    padding: 10px 20px; /* Ajusta el padding según el tamaño que desees */
+    border-radius: 5px; /* Añade bordes redondeados si lo deseas */
+    font-size: 16px; /* Tamaño de la fuente */
+    cursor: pointer;
+    font-size: 25px;
+  }
+  
+  .clear .btn:hover {
+    background-color: #8edf5f; /* Cambiar el color de fondo al pasar el mouse */
+    color: #ec7744; /* Cambiar el color de la letra al pasar el mouse */
+  }
+  

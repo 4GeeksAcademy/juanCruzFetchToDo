@@ -7,10 +7,12 @@ import {
   faLockOpen,
 } from "@fortawesome/free-solid-svg-icons";
 
+
+
 const Home = () => {
   const [tareas, setTareas] = useState("");
   const [listaTareas, setListaTareas] = useState([]);
-  const [editarTarea, setEditarTarea] = useState(null);
+  
   const [tareasGuardadas, setTareasGuardadas] = useState([]); // Estado para tareas guardadas
 
   const createUser = () => {
@@ -29,10 +31,10 @@ const Home = () => {
         return resp.json();
       })
       .then((data) => {
-        console.log(data); // Esto imprimirá en la consola el objeto exacto recibido del servidor
+        console.log(data); 
       })
       .catch((error) => {
-        // Manejo de errores
+        
         console.log(error);
       });
   };
@@ -53,11 +55,13 @@ const Home = () => {
       .then((data) => {
         console.log(data);
         getTareas();
+        setTareas("")
       })
       .catch((error) => {
         // Manejo de errores
         console.log(error);
       });
+
   };
 
   //Get Tareas
@@ -106,7 +110,7 @@ const Home = () => {
       })
       .then((data) => {
        getTareas();
-        console.log(data); // Esto imprimirá en la consola el objeto exacto recibido del servidor
+        console.log(data); 
       })
       .catch((error) => {
         // Manejo de errores
@@ -119,6 +123,43 @@ const Home = () => {
       createTarea();
     }
   };
+
+  const clearAll = () => {
+
+    if(listaTareas.length=== 0){
+      alert("No hay tareas para eliminar!")
+    }
+
+    listaTareas.forEach((tarea)=>{
+
+    fetch (`https://playground.4geeks.com/todo/todos/${tarea.id}`,{
+      method: "DELETE",
+      headers: {"Content-Type": "aplication/json",       
+      },
+
+    })
+    .then((resp)=>{
+      if(!resp.ok){
+        console.log("Error en la respuesta");
+      }
+      return resp.json()
+    })
+
+    .then((data)=>{
+      console.log(data);
+      setListaTareas([]);
+    })
+  
+    .catch((error) =>{
+      console.log(error);
+    })
+
+  })
+    
+  };
+
+
+
 
   useEffect(() => {
     createUser();
@@ -149,6 +190,10 @@ const Home = () => {
         </button>
       </div>
 
+      <div className="clear">
+        <button className="btn" style={{backgroundColor:"#ec7744", color: "#8edf5f"}} onClick={clearAll}>Clear All</button>
+      </div>
+
       <div className="container">
         <ul className="list-group">
           {listaTareas.length === 0 ? (
@@ -159,24 +204,8 @@ const Home = () => {
             listaTareas.map((tarea) => (
               <li className="list-group-item" key={tarea.id} id="input">
                 {tarea.label}
-                <FontAwesomeIcon
-                  icon={faPencil}
-                  style={{
-                    marginRight: "10px",
-                    color: "#ec7744",
-                    cursor: "pointer",
-                  }}
-                  onClick={() => iniciarEdicion(id)}
-                />
-                <FontAwesomeIcon
-                  icon={tareasGuardadas[tarea.id] ? faLockOpen : faLock}
-                  style={{
-                    marginLeft: "10px",
-                    color: "#ec7744",
-                    cursor: "pointer",
-                  }}
-                  onClick={() => toggleGuardarTarea(tarea.id)}
-                />
+                <div className="right-icons">
+                
                 <span
                   style={{
                     cursor: "pointer",
@@ -188,6 +217,7 @@ const Home = () => {
                 >
                   X
                 </span>
+                </div>
               </li>
             ))
           )}
